@@ -2,6 +2,7 @@ from controllers.json_function import load_tournament
 from controllers import tournament_controllers
 from views import player_views
 from views import tournament_views
+import os
 
 
 def main_menu():
@@ -19,16 +20,20 @@ def main_menu():
         if choice == "1":
             player_views.players_for_competition()
         elif choice == "2":
-            tournament = tournament_views.create_tournament()
-            for player in tournament.players:
-                print(player)
-            tournament.shuffle_players()
-            tournament.save_to_json(f"./tournois/{tournament.name}")
-            print("Le tournoi à été crée avec succés")
-            start_or_pass = input("Si vous souhaitez démarrer le tournoi "
-                                  "tapez 1 sinon entrer une touche: ")
-            if start_or_pass == "1":
-                tournament_controllers.play_tournament(tournament)
+            if not os.path.exists("./competition/players.json"):
+                print("Il n'y a aucun joueur inscrit à la "
+                      "competition annuelle: Tapez 1 pour les inscrire")
+            else:
+                tournament = tournament_views.create_tournament()
+                for player in tournament.players:
+                    print(player)
+                tournament.shuffle_players()
+                tournament.save_to_json(f"./tournois/{tournament.name}")
+                print("Le tournoi à été crée avec succés")
+                start_or_pass = input("Si vous souhaitez démarrer le tournoi "
+                                      "tapez 1 sinon entrer une touche: ")
+                if start_or_pass == "1":
+                    tournament_controllers.play_tournament(tournament)
         elif choice == "3":
             tournament_name = input("Entrer le nom du tournoi à reprendre: ")
             tournament = load_tournament(f"./tournois/{tournament_name}")

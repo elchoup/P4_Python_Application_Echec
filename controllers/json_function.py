@@ -99,17 +99,18 @@ def load_winner(file_path):
     try:
         with open(file_path, "r") as json_file:
             data = json.load(json_file)
-            
+
         player_ranking = data["Classement des joueurs"]
-        
+
         winner = player_ranking[0]
         winner_infos = Player(winner["Nom"], winner["Prenom"], winner["Score"])
-        print(f"Le vainqueur est {winner_infos.lastname}, {winner_infos.firstname} avec un score de {winner_infos.score}")
-        
+        print(f"Le vainqueur est {winner_infos.lastname}, "
+              f"{winner_infos.firstname} avec un score de "
+              f"{winner_infos.score}")
+
     except FileNotFoundError:
         print(f"Fichier {file_path} introuvable.")
         return None
     except json.JSONDecodeError:
         print(f"Erreur de décodage JSON pour le fichier {file_path}.")
         return None
-        

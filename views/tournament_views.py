@@ -48,8 +48,6 @@ def select_players():
             print("Le joueur saisi n'est pas inscrit à la competition")
     players_ranking = players.copy()
     players.sort(key=lambda player: (player.lastname, player.firstname))
-    for player in players:
-        print(players)
 
     return players, players_ranking
 
@@ -63,8 +61,14 @@ def create_tournament():
     place = regex_validation.is_name_valid("Lieu du Tournoi: ")
     start = regex_validation.is_date_valid("Date de début du tournoi: ")
     end = regex_validation.is_date_valid("Date de fin du Tournoi: ")
-    number_of_rounds = int(input("Nombre de rounds: "))
     players, players_ranking = select_players()
+    while True:
+        number_of_rounds = int(input("Nombre de rounds: "))
+        if number_of_rounds >= len(players_ranking):
+            print("Impossible trop de rounds pour que les joueurs "
+                  "ne se rencontrent pas une deuxième fois")
+        else:
+            break
 
     tournament = Tournament(name, place, start, end, players, players_ranking,
                             number_of_rounds)
