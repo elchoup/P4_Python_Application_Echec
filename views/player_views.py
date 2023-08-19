@@ -6,6 +6,9 @@ from controllers import regex_validation
 def players_for_competition():
     """
     Function to add all the players from club at competition list of players.
+    We use some regex function to check if informations are enter correctly.
+    We also check if player is not already registered in the list.
+    Then we load it in json file
     """
     players = []
     print("Merci d'inscrire les joueurs à la compétition annuelle:")

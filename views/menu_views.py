@@ -6,6 +6,11 @@ import os
 
 
 def main_menu():
+    """Function to make a main menu for the app.
+    When the choice is made we send the user to different functions.
+    Registered players, create a tournament, come back to a tournament
+    in progress or leave the app.
+    """
     x = 0
     while x == 0:
         print("\nMenu principal: ")
