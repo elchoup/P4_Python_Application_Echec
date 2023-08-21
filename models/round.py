@@ -36,7 +36,6 @@ class Round:
             player_2.played_against.append(player_1.index)
             game = Game(player_1, player_2)
             self.games.append(game)
-            # self.games.append((player_1, player_2))
 
         if num_players % 2 != 0:
             self.players.pop()
@@ -51,7 +50,7 @@ class Round:
                       f"{player_2.lastname}")
             else:
                 print(f"{player_1.lastname} n'a pas d'adversaire "
-                      "il ne marque ni ne gagne de point")
+                      "il ne marque ni ne perd de point")
             self.games[i].play()
             self.next_game()
 

@@ -47,7 +47,7 @@ def main_menu():
             else:
                 print("Tournoi non trouvé")
         elif choice == "4":
-            print("Au revour")
+            print("Au revoir")
             x = 1
         else:
             print("Option invalide veuillez choisir entre 1, 2, 3 ou 4")

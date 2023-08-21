@@ -66,7 +66,8 @@ def create_tournament():
         number_of_rounds = int(input("Nombre de rounds: "))
         if number_of_rounds >= len(players_ranking):
             print("Impossible trop de rounds pour que les joueurs "
-                  "ne se rencontrent pas une deuxième fois")
+                  "ne se rencontrent pas une deuxième fois: "
+                  "Nombre de joueurs - 1 maximum")
         else:
             break
 

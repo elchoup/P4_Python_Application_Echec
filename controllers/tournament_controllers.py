@@ -21,6 +21,7 @@ def play_tournament(tournament):
             tournament.next_round()
         tournament.save_to_json(f"./tournois/{tournament.name}")
         if tournament.current_round == tournament.number_of_rounds + 1:
+            tournament.save_to_json(f"./tournois/{tournament.name}")
             load_winner(f"./tournois/{tournament.name}")
             print("Tournoi terminé")
             time.sleep(2)

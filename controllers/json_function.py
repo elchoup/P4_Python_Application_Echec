@@ -32,7 +32,6 @@ def load_tournament(file_path):
             start = data["Debut du tournoi"]
             end = data["Fin du tournoi"]
             round_in_progress = data["Round en cours"]
-            # game_in_progress = data["Match en cours"]
             number_of_rounds = data["Nombre de rounds"]
 
             players_data = data["Joueurs inscrits"]
@@ -55,7 +54,7 @@ def load_tournament(file_path):
                                 )
                 player.score = player_data["Score"]
                 player.index = player_data["Index"]
-                # player.played_against = player_data["Joueurs affrontés"]
+                player.played_against = player_data["Joueurs affrontes"]
                 players_ranking.append(player)
             round = Round(players_ranking)
 
@@ -103,7 +102,8 @@ def load_winner(file_path):
         player_ranking = data["Classement des joueurs"]
 
         winner = player_ranking[0]
-        winner_infos = Player(winner["Nom"], winner["Prenom"], winner["Score"])
+        winner_infos = Player(winner["Nom"], winner["Prenom"], 
+                              winner["Age"], winner["Score"])
         print(f"Le vainqueur est {winner_infos.lastname}, "
               f"{winner_infos.firstname} avec un score de "
               f"{winner_infos.score}")
