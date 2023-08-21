@@ -102,7 +102,7 @@ def load_winner(file_path):
         player_ranking = data["Classement des joueurs"]
 
         winner = player_ranking[0]
-        winner_infos = Player(winner["Nom"], winner["Prenom"], 
+        winner_infos = Player(winner["Nom"], winner["Prenom"],
                               winner["Age"], winner["Score"])
         print(f"Le vainqueur est {winner_infos.lastname}, "
               f"{winner_infos.firstname} avec un score de "
